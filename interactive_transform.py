@@ -99,11 +99,12 @@ def main():
 
         # Display frames and draw points/instructions
         for i, name in zip(CAMERA_INDICES, WINDOW_NAMES):
-            frame_copy = frames[i].copy()
-            if is_capturing_points:
-                draw_instructions(frame_copy, name, len(points[name]))
-            draw_points(frame_copy, points[name])
-            cv2.imshow(name, frame_copy)
+            if i in frames:
+                frame_copy = frames[i].copy()
+                if is_capturing_points:
+                    draw_instructions(frame_copy, name, len(points[name]))
+                draw_points(frame_copy, points[name])
+                cv2.imshow(name, frame_copy)
 
         # Check if we have enough points to calculate the transformation
         if is_capturing_points and all(len(p) == NUM_POINTS for p in points.values()):
@@ -143,7 +144,7 @@ def main():
             cv2.imshow('Warped Result', warped_frame)
 
 
-        key = cv2.waitKey(1) & 0xFF
+        key = cv2.waitKey(20) & 0xFF
         if key == ord('q'):
             break
         elif key == ord('r'):
@@ -172,4 +173,4 @@ def main():
     print("Session ended.")
 
 if __name__ == "__main__":
-    main() 
+    main()

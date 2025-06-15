@@ -5,6 +5,8 @@ import os
 # --- Configuration ---
 CAMERA_INDICES = [0, 1]  # Camera 0 is source, Camera 1 is destination/reference
 MATRIX_FILE = 'transformation_matrix.npy'
+OUTPUT_FILENAME = 'preview_transform_output.mp4'
+OUTPUT_FPS = 20.0 # You might want to adjust this
 # ---------------------
 
 def main():
@@ -43,6 +45,15 @@ def main():
     h, w, _ = frame1.shape
     result_frame_size = (w, h)
 
+    # --- Video Writer Initialization ---
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    out = cv2.VideoWriter(OUTPUT_FILENAME, fourcc, OUTPUT_FPS, result_frame_size)
+    if not out.isOpened():
+        print(f"Error: Could not open video writer for path: {OUTPUT_FILENAME}")
+        # We can still run the preview even if video writing fails
+    else:
+        print(f"Recording blended view to '{OUTPUT_FILENAME}'")
+
     # Create windows
     cv2.namedWindow('Warped View (Cam 0 -> Cam 1 Perspective)')
     cv2.namedWindow('Original View (Cam 1)')
@@ -70,6 +81,9 @@ def main():
         blended_frame = cv2.addWeighted(frame1, 0.5, warped_frame, 0.5, 0)
         cv2.imshow('Blended View (For Alignment Check)', blended_frame)
 
+        # Write the blended frame to our video file
+        if out.isOpened():
+            out.write(blended_frame)
 
         key = cv2.waitKey(1) & 0xFF
         if key == ord('q'):
@@ -78,8 +92,10 @@ def main():
     # Cleanup
     for cap in caps.values():
         cap.release()
+    if 'out' in locals() and out.isOpened():
+        out.release()
     cv2.destroyAllWindows()
-    print("Preview ended.")
+    print(f"Preview ended. Output video saved to '{OUTPUT_FILENAME}' if recording was successful.")
 
 if __name__ == "__main__":
     main() 
