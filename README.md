@@ -5,7 +5,7 @@ This project uses a thermal camera to capture and process video.
 ## Demo
 
 
-https://github.com/user-attachments/assets/b0a682ce-6282-4ce2-b310-cd4f6ca3e83c
+![Demo](https://github.com/user-attachments/assets/b0a682ce-6282-4ce2-b310-cd4f6ca3e83c)
 
 
 
