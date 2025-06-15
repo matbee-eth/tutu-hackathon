@@ -4,7 +4,7 @@ This project uses a thermal camera to capture and process video.
 
 ## Demo
 
-<video src="preview_transform_output.mp4" width="600" controls></video>
+[![Watch the video](https://i.sstatic.net/Vp2cE.png)](preview_transform_output.mp4)
 
 ## Dataset
 
