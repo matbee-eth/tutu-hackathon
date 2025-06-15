@@ -2,6 +2,10 @@
 
 This project uses a thermal camera to capture and process video.
 
+## Dataset
+
+- [Thermal Dataset 5](https://huggingface.co/datasets/LeRobot-worldwide-hackathon/353-TheTuTuLove-Thermal_Sorting/settings)
+
 ## Hardware
 
 - **Thermal Camera**: [MLX90640 32x24 Thermal Imager](https://www.aliexpress.com/item/1005007379371812.html)
