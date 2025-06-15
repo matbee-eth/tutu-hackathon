@@ -2,9 +2,13 @@
 
 This project uses a thermal camera to capture and process video.
 
+## Demo
+
+<video src="preview_transform_output.mp4" width="600" controls></video>
+
 ## Dataset
 
-- [Thermal Dataset 5](https://huggingface.co/datasets/LeRobot-worldwide-hackathon/353-TheTuTuLove-Thermal_Sorting/settings)
+- [Thermal Dataset 5](https://huggingface.co/datasets/LeRobot-worldwide-hackathon/353-TheTuTuLove-Thermal_Sorting)
 
 ## Hardware
 
